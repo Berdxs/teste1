@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quer Namorar Comigo?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #f5f5f5;
+    }
+    .container {
+      text-align: center;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 10px;
+      transition: all 0.3s ease;
+    }
+    #yes {
+      background-color: #4CAF50;
+      color: white;
+    }
+    #no {
+      background-color: #f44336;
+      color: white;
+      position: absolute;
+    }
+    #message {
+      display: none;
+      margin-top: 20px;
+      font-size: 20px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>teste ❤️</h1>
+    <button id="yes">Sim</button>
+    <button id="no">Não</button>
+    <p id="message">teste! 💖</p>
+  </div>
+
+  <script>
+    const noButton = document.getElementById('no');
+    const yesButton = document.getElementById('yes');
+    const message = document.getElementById('message');
+    const container = document.querySelector('.container');
+
+    // Função para mover o botão "Não"
+    function moveButton() {
+      const containerRect = container.getBoundingClientRect();
+      const maxX = containerRect.width - noButton.offsetWidth;
+      const maxY = containerRect.height - noButton.offsetHeight;
+
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      noButton.style.left = `${randomX}px`;
+      noButton.style.top = `${randomY}px`;
+    }
+
+    // Evento para o botão "Sim"
+    yesButton.addEventListener('click', () => {
+      message.style.display = 'block'; // Mostra a mensagem
+    });
+
+    // Eventos para o botão "Não"
+    noButton.addEventListener('mouseenter', moveButton); // Para computadores
+    noButton.addEventListener('touchstart', moveButton); // Para celulares
+  </script>
+</body>
+</html>
